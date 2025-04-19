@@ -24,18 +24,18 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-gray-600 p-8 border border-[#d299c2] rounded-2xl">
+    <main className="min-h-screen bg-white text-gray-600 p-8 border border-lila rounded-2xl">
       <h1 className="text-gray-500 text-3xl mb-8 font-bold">ToDo List</h1>
 
       <section>
         <form onSubmit={handleSubmit}>
-          <div className="flex shadow-lg shadow-[#d299c2] rounded-xl mb-5">
+          <div className="flex shadow-lg shadow-lila rounded-xl mb-5">
             <input
               type="text"
               name="item"
               placeholder="Add your task"
               required
-              className="flex-1 rounded-l-xl px-4 py-2 outline-none border border-gray-300 focus:ring-1 focus:ring-[#d299c2] "
+              className="flex-1 rounded-l-xl px-4 py-2 outline-none border border-gray-300 focus:ring-1 focus:ring-lila "
             />
             <Button rounded="rounded-r-xl">Add</Button>
           </div>

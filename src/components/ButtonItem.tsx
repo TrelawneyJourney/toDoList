@@ -13,8 +13,8 @@ function ButtonItem({ children, onClick, completed }: Props) {
       className={`cursor-pointer px-3 py-2 text-white  rounded-full 
         ${
           completed
-            ? "bg-[#6433567c] hover:bg-[#d299c2]"
-            : "bg-[#d299c2] hover:bg-[#d480bc]"
+            ? "bg-gray-500 hover:bg-gray-400"
+            : "bg-lila hover:bg-lila-2"
         }`}
     >
       {children}
