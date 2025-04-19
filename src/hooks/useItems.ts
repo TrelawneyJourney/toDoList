@@ -8,6 +8,7 @@ export const useItems = () => {
     const newItem: Item = {
       id: crypto.randomUUID(),
       text,
+      completed: false,
     };
 
     setItems((prevItems) => {
@@ -21,9 +22,18 @@ export const useItems = () => {
     });
   };
 
+  const checkedItem = (id: string) => {
+    setItems((prevItems) => {
+      return prevItems.map((item) =>
+        item.id == id ? { ...item, completed: !item.completed } : item
+      );
+    });
+  };
+
   return {
     items,
     addItem,
     removeItem,
+    checkedItem,
   };
 };

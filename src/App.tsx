@@ -1,9 +1,10 @@
 import "./App.css";
+import Button from "./components/Button";
 import Item from "./components/Item";
 import { useItems } from "./hooks/useItems";
 
 function App() {
-  const { addItem, items, removeItem } = useItems();
+  const { addItem, items, removeItem, checkedItem } = useItems();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,33 +19,42 @@ function App() {
     removeItem(id);
   };
 
+  const handleCheckedItem = (id: string) => () => {
+    checkedItem(id);
+  };
+
   return (
-    <main>
-      <h1>ToDo List</h1>
+    <main className="min-h-screen bg-white text-gray-600 p-8 border border-[#d299c2] rounded-2xl">
+      <h1 className="text-gray-500 text-3xl mb-8 font-bold">ToDo List</h1>
+
       <section>
-        <form action="" onSubmit={handleSubmit}>
-          <label htmlFor="">
+        <form onSubmit={handleSubmit}>
+          <div className="flex shadow-lg shadow-[#d299c2] rounded-xl mb-5">
             <input
               type="text"
               name="item"
-              placeholder="Add your Task"
+              placeholder="Add your task"
               required
+              className="flex-1 rounded-l-xl px-4 py-2 outline-none border border-gray-300 focus:ring-1 focus:ring-[#d299c2] "
             />
-            <button>Add</button>
-          </label>
+            <Button rounded="rounded-r-xl">Add</Button>
+          </div>
         </form>
       </section>
+
       <section>
         {items.length === 0 ? (
-          <p>No tasks to perform.</p>
+          <p className="text-gray-500">No tasks to perform.</p>
         ) : (
-          <ul>
+          <ul className="">
             {items.map((item) => {
               return (
                 <Item
                   key={item.id}
                   text={item.text}
+                  completed={item.completed}
                   handleClick={handleRemoveItem(item.id)}
+                  handleClickCompleted={handleCheckedItem(item.id)}
                 />
               );
             })}
